@@ -5,6 +5,6 @@ import ListingBox from './components/Listings';
 // import Routes from './config/Routes';
 
 ReactDOM.render(
-  <ListingBox />,
+  <ListingBox url="localhost:3000/api/listings"/>,
   document.getElementById('app')
 );

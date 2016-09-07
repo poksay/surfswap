@@ -16,6 +16,25 @@ class Listing extends React.Component{
 };
 
 class ListingBox extends React.Component{
+  loadListingsFromServer() {
+    $.ajax({
+      url: this.props.url,
+      dataType: 'json',
+      cache: false,
+      success: function(data) {
+        this.setState({data: data});
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  };
+  getInitialState() {
+    return {data: []};
+  };
+  componentDidMount() {
+    this.loadListingsFromServer();
+  };
   // Set state of component to pass to ListingList component
   // function to get Listing data
   // render the Lisitng List with a title
@@ -23,10 +42,10 @@ class ListingBox extends React.Component{
     return (
       <div className="container">
         <nav> SurfSwap </nav>
-        <Listing name="Al Merrick 6ft 0in" price="$210" picture="http://www.naturalnecessity.com.au/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/c/h/chanel-islands-neck-beard-round-tail-surfboard-1_1.jpg"/>
+        <Listing />
       </div>
     )};
-}
+};
 
 // class ListingList extends React.Component{
 //   render() {
