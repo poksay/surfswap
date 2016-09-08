@@ -3,12 +3,12 @@ const webpack = require('webpack');
 module.exports = {
   entry: './app/App.js',
   output: {
-    path: './',
+    path: './api/public',
     filename: 'index.js',
   },
   devtool: 'cheap-source-map',
   devServer: {
-    contentBase: "./",
+    contentBase: "./api/public",
     port: 3333
   },
   plugins: [
