@@ -41,9 +41,9 @@ var ListingBox = React.createClass({
   // render the Lisitng List with a title
   render: function() {
     return (
-      <div className="container">
-        <nav> SurfSwap </nav>
-        <Listing />
+      <div className="listingBox">
+        <h1>SurfSwap!</h1>
+        <ListingList data={this.state.data} />
       </div>
     )}
 });
