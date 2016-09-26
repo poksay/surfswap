@@ -1,5 +1,6 @@
 import React from 'react';
 import {Card, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import CreateListingModal from '../components/CreateListingModal'
 // import Axios from 'axios';
 
 var Listing = React.createClass({
@@ -51,6 +52,7 @@ var ListingBox = React.createClass({
     return (
       <div className="listingBox">
         <h1>SurfSwap!</h1>
+        <CreateListingModal />
         <ListingList data={this.state.data} />
       </div>
     )}

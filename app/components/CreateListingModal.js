@@ -2,10 +2,11 @@ import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import FlatButton from 'material-ui/FlatButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
 
-class CreateListingModal extends Component{
+export class CreateListingModal extends React.Component{
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
         open: false
     }
@@ -36,7 +37,7 @@ class CreateListingModal extends Component{
 
     return (
       <div>
-        <FloatingActionButton>
+        <FloatingActionButton onTouchTap={this.handleOpen}>
           <ContentAdd />
         </FloatingActionButton>
         <Dialog
