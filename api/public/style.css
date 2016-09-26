@@ -1,29 +1,5 @@
-.listing-container {
-  border: 1px solid black;
-  border-radius: 5px;
-  width: 400px;
-  height: 400px;
-}
-
-#listing-price {
-  display: inline;
-  float: right;
-  padding-right: 10px
-}
-
-#listing-name {
-  display: inline;
+.listing-card {
   float: left;
-  padding-left: 10px
-}
-
-#listing-image {
-  margin: auto;
-  display: block;
-  max-height: 80%
-}
-
-nav {
-  background-color: blue;
-  margin-bottom: 20px;
+  margin: 10px;
+  width: 300px;
 }

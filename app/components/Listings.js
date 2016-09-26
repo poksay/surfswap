@@ -1,16 +1,24 @@
 import React from 'react';
+import {Card, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 // import Axios from 'axios';
 
 var Listing = React.createClass({
   render: function() {
     return(
-      <div className="listing-container">
-        <div className="listing-header">
-          <h2 id="listing-name">{this.props.name}</h2>
-          <h2 id="listing-price">{this.props.price}</h2>
-        </div>
-        <img id="listing-image" src={this.props.picture}></img>
-      </div>
+      <Card className='listing-card'>
+        <CardHeader
+          title={this.props.name}
+          subtitle={this.props.price}
+          // avatar="images/jsa-128.jpg"
+        />
+        <CardMedia>
+          <img src={this.props.picture}/>
+        </CardMedia>
+        <CardTitle title={this.props.name} subtitle={this.props.price} />
+        <CardText>
+          My favorite board of all time, I hate to sell it but need the cash or taxes
+        </CardText>
+      </Card>
     );
   }
 });
