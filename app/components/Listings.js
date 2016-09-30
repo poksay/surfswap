@@ -39,6 +39,25 @@ var ListingBox = React.createClass({
     });
   },
 
+  handleListingSubmit: function(listing) {
+    var listings = this.state.data;
+    var newListings = listings.concat([listing]);
+    this.setState({data: newListings});
+    $.ajax({
+      url: this.props.url,
+      dataType: 'json',
+      type: 'POST',
+      data: listing,
+      success: function(data) {
+        this.setState({data: data});
+      }.bind(this),
+      error: function(xhr, status, err) {
+        this.setState({data: listings});
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  },
+
   getInitialState: function() {
     return {data: []};
   },
@@ -52,7 +71,7 @@ var ListingBox = React.createClass({
     return (
       <div className="listingBox">
         <h1>SurfSwap!</h1>
-        <CreateListingModal />
+        <CreateListingModal onListingSubmit={this.handleListingSubmit}/>
         <ListingList data={this.state.data} />
       </div>
     )}
