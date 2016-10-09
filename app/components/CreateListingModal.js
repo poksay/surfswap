@@ -24,8 +24,27 @@ var ListingForm = React.createClass({
 
   handleSubmit: function(e) {
     e.preventDefault();
-    this.props.onListingSubmit({name:this.name, price:this.price, picture:this.picture});
+    this.handleListingSubmit({name:this.state.name, price:this.state.price, picture:this.state.picture});
     this.setState({ name: '', price: '', picture: ''});
+  },
+
+  handleListingSubmit: function(listing) {
+    var listings = this.props.data;
+    var newListings = listings.concat([listing]);
+    this.setState({data: newListings});
+    $.ajax({
+      url: this.props.url,
+      dataType: 'json',
+      type: 'POST',
+      data: listing,
+      success: function(data) {
+        this.setState({data: data});
+      }.bind(this),
+      error: function(xhr, status, err) {
+        this.setState({data: listings});
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
   },
 
   render: function() {
@@ -95,7 +114,7 @@ var CreateListingModal = React.createClass({
           modal={true}
           open={this.state.open}
         >
-          <ListingForm onListingSubmit={this.props.onListingSubmit}/>
+          <ListingForm data={this.props.data} url={this.props.url}/>
         </Dialog>
       </div>
     );
