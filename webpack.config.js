@@ -6,6 +6,7 @@ module.exports = {
     path: './api/public',
     filename: 'index.js',
   },
+  watch: true,
   devtool: 'cheap-source-map',
   devServer: {
     contentBase: "./api/public",
