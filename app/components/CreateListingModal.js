@@ -36,7 +36,7 @@ var ListingForm = React.createClass({
       url: this.props.url,
       dataType: 'json',
       type: 'POST',
-      data: listing,
+      data: {"listing": JSON.stringify(listing)},
       success: function(data) {
         this.setState({data: data});
       }.bind(this),
